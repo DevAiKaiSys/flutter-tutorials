@@ -20,3 +20,19 @@ Hive Object Converter
 ```
 flutter pub add get_it
 ```
+
+# font
+
+[google_fonts](https://pub.dev/packages/google_fonts)
+
+```
+flutter pub add google_fonts
+```
+
+# calendar
+
+[table_calendar](https://pub.dev/packages/table_calendar)
+
+```
+flutter pub add table_calendar
+```
