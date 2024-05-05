@@ -1,9 +1,15 @@
-class Todo {
-  final String name;
+import 'package:hive/hive.dart';
 
-  final DateTime created;
+part 'todo.g.dart';
 
-  final bool done = false;
+@HiveType(typeId: 0)
+class Todo extends HiveObject {
+  @HiveField(0)
+  late String name;
 
-  Todo(this.name, this.created);
+  @HiveField(1)
+  late DateTime created;
+
+  @HiveField(2)
+  bool done = false;
 }
