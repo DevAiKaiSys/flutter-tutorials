@@ -17,6 +17,12 @@ dart pub add dev:isar_generator
 dart pub add dev:build_runner
 ```
 
+## picking images
+
+```
+flutter pub add image_picker
+```
+
 ### generate
 
 ```
