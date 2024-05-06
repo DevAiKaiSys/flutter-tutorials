@@ -62,7 +62,7 @@ class IsarService {
 
   Future<Isar> openDB() async {
     if (Isar.instanceNames.isEmpty) {
-      final dir = await getApplicationDocumentsDirectory();
+      final dir = await getApplicationSupportDirectory();
       return await Isar.open(
         [CourseSchema, StudentSchema, TeacherSchema],
         inspector: true,
