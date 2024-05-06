@@ -3,6 +3,7 @@
 ```
 flutter pub add isar
 flutter pub add isar_flutter_libs
+flutter pub add path_provider
 ```
 
 ```
