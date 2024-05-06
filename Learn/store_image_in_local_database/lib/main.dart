@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:store_image_in_local_database/database_adapter.dart';
-import 'package:store_image_in_local_database/hive_service.dart';
+import 'package:store_image_in_local_database/isar_service.dart';
 
 Future<void> main() async {
-  // await Hive.initFlutter();
-  await Hive.initFlutter((await getApplicationSupportDirectory()).path);
+  /*await Hive.initFlutter();*/
+  /*await Hive.initFlutter((await getApplicationSupportDirectory()).path);*/
 
   runApp(const MyApp());
 }
@@ -39,7 +37,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final DatabaseAdapter adapter = HiveService();
+  /*final DatabaseAdapter adapter = HiveService();*/
+  late DatabaseAdapter adapter = IsarService();
 
   @override
   Widget build(BuildContext context) {
