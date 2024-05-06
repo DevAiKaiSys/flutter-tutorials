@@ -1,7 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:store_image_in_local_database/database_adapter.dart';
+import 'package:store_image_in_local_database/hive_service.dart';
 
-void main() {
+Future<void> main() async {
+  // await Hive.initFlutter();
+  await Hive.initFlutter((await getApplicationSupportDirectory()).path);
+
   runApp(const MyApp());
 }
 
@@ -31,13 +39,36 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  final DatabaseAdapter adapter = HiveService();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Container(),
+      body: FutureBuilder<List<Uint8List>>(
+        future: _readImagesFromDatabase(),
+        builder: (context, AsyncSnapshot<List<Uint8List>> snapshot) {
+          if (snapshot.hasError) {
+            return Text("Error appeared ${snapshot.error}");
+          }
+
+          if (snapshot.hasData) {
+            if (snapshot.data == null || snapshot.data!.isEmpty) {
+              return const Text("Nothing to show");
+            }
+
+            return ListView.builder(
+              itemCount: snapshot.data!.length,
+              itemBuilder: (context, index) => Image.memory(
+                snapshot.data![index],
+              ),
+            );
+          }
+          return const Center(child: CircularProgressIndicator());
+        },
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: _pickImage,
         tooltip: 'Increment',
@@ -50,5 +81,13 @@ class _MyHomePageState extends State<MyHomePage> {
     ImagePicker imagePicker = ImagePicker();
     XFile? image = await imagePicker.pickImage(source: ImageSource.gallery);
     if (image == null) return;
+
+    Uint8List imageBytes = await image.readAsBytes();
+    await adapter.storeImage(imageBytes);
+    setState(() {});
+  }
+
+  Future<List<Uint8List>> _readImagesFromDatabase() async {
+    return adapter.getImages();
   }
 }
