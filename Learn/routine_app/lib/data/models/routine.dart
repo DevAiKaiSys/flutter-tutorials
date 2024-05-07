@@ -3,6 +3,8 @@ import 'package:routine_app/domain/entities/routine.entity.dart';
 
 import 'category.dart';
 
+part 'routine.g.dart';
+
 @Collection()
 class Routine {
   Id? id;

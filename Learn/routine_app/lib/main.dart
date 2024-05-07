@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:routine_app/data/datasources/local_database.dart';
+import 'package:routine_app/injection_container.dart';
 
-void main() {
+Future<void> main() async {
+  // init Get_it
+  setup();
+  final localDB = getIt.get<LocalDatabase>();
+  await localDB.initDB();
   runApp(const MyApp());
 }
 

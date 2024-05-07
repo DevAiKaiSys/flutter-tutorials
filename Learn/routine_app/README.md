@@ -11,10 +11,10 @@ dart pub add dev:isar_generator
 dart pub add dev:build_runner
 ```
 
-##
+## service locator
 
 ```
-flutter pub add multi_select_flutter
+flutter pub add get_it
 ```
 
 ### generate
