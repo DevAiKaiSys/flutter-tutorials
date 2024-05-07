@@ -3,6 +3,8 @@ import 'package:routine_app/domain/entities/category.entity.dart';
 
 @Collection()
 class Category {
+  Id? id;
+  @Index(unique: true)
   late String name;
 
   CategoryEntity toEntity() {

@@ -3,9 +3,13 @@ import 'package:routine_app/domain/entities/routine.entity.dart';
 
 @Collection()
 class Routine {
+  Id? id;
   late String title;
+  @Index()
   late DateTime startTime;
+  @Index(caseSensitive: false)
   late String day;
+  @Index(composite: [CompositeIndex('title')])
   late String category;
 
   RoutineEntity toEntity() {
