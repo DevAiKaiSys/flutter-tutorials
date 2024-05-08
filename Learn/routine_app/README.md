@@ -17,6 +17,12 @@ dart pub add dev:build_runner
 flutter pub add get_it
 ```
 
+## compare objects
+
+```
+flutter pub add equatable
+```
+
 ### generate
 
 ```

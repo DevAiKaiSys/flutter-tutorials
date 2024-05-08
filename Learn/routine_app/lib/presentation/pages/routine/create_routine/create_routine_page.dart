@@ -11,8 +11,10 @@ class CreateRoutinePage extends StatefulWidget {
 }
 
 class _CreateRoutinePageState extends State<CreateRoutinePage> {
-  List<String> categories = ['work', 'school', 'home'];
-  String dropdownValue = 'work';
+  final categoryRepository = getIt.get<CategoryRepository>();
+  /*List<String> categories = ['work', 'school', 'home'];
+  String dropdownValue = 'work';*/
+  CategoryEntity? dropdownValue;
   final TextEditingController _titleController = TextEditingController();
   final TextEditingController _timeController = TextEditingController();
   final TextEditingController _newCatController = TextEditingController();
@@ -48,7 +50,7 @@ class _CreateRoutinePageState extends State<CreateRoutinePage> {
                 SizedBox(
                   // width 70% width screen
                   width: MediaQuery.of(context).size.width * 0.7,
-                  child: DropdownButton(
+                  child: /*DropdownButton(
                     focusColor: const Color(0xffffffff),
                     dropdownColor: const Color(0xffffffff),
                     isExpanded: true,
@@ -63,6 +65,19 @@ class _CreateRoutinePageState extends State<CreateRoutinePage> {
                       setState(() {
                         dropdownValue = newValue!;
                       });
+                    },
+                  )*/
+                      FutureBuilder(
+                    future: categoryRepository.getCategories(),
+                    builder: (context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return const CircularProgressIndicator(); // Show loading indicator while fetching data.
+                      } else if (snapshot.hasError) {
+                        return Text('Error: ${snapshot.error}');
+                      } else {
+                        List<CategoryEntity>? categories = snapshot.data;
+                        return _buildDropdownButton(categories);
+                      }
                     },
                   ),
                 ),
@@ -79,6 +94,8 @@ class _CreateRoutinePageState extends State<CreateRoutinePage> {
                                       onPressed: () {
                                         if (_newCatController.text.isNotEmpty) {
                                           _addCategory();
+                                          // Close the AlertDialog
+                                          Navigator.pop(context);
                                         }
                                       },
                                       child: const Text("Add"))
@@ -148,6 +165,26 @@ class _CreateRoutinePageState extends State<CreateRoutinePage> {
     );
   }
 
+  DropdownButton _buildDropdownButton(List<CategoryEntity>? categories) {
+    return DropdownButton<CategoryEntity>(
+      focusColor: const Color(0xffffffff),
+      dropdownColor: const Color(0xffffffff),
+      isExpanded: true,
+      value: dropdownValue,
+      icon: const Icon(Icons.keyboard_arrow_down),
+      items: categories
+          ?.map<DropdownMenuItem<CategoryEntity>>((CategoryEntity nvalue) {
+        return DropdownMenuItem<CategoryEntity>(
+            value: nvalue, child: Text(nvalue.name));
+      }).toList(),
+      onChanged: (CategoryEntity? newValue) {
+        setState(() {
+          dropdownValue = newValue!;
+        });
+      },
+    );
+  }
+
   _selectedTime(BuildContext context) async {
     final TimeOfDay? timeOfDay = await showTimePicker(
         context: context,
@@ -163,14 +200,16 @@ class _CreateRoutinePageState extends State<CreateRoutinePage> {
     }
   }
 
-//create category record
+  //create category record
   _addCategory() async {
-    final categoriyRepository = getIt.get<CategoryRepository>();
-
     final newCategory = CategoryEntity(_newCatController.text);
 
-    categoriyRepository.saveCategory(newCategory);
+    categoryRepository.saveCategory(newCategory);
 
     _newCatController.clear();
+    setState(() {
+      // refresh page read all categories & select new category
+      dropdownValue = newCategory;
+    });
   }
 }
