@@ -5,7 +5,7 @@ import 'package:routine_app/data/models/category.dart';
 import 'package:routine_app/data/models/routine.dart';
 
 class IsarDatabaseImpl implements LocalDatabase {
-  late final isar;
+  late final Isar isar;
   @override
   Future<void> initDB() async {
     final dir = await getApplicationSupportDirectory();

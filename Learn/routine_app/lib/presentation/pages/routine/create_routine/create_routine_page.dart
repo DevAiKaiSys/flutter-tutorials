@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:routine_app/domain/entities/category.entity.dart';
+import 'package:routine_app/domain/repositories/category_repository.dart';
+import 'package:routine_app/injection_container.dart';
 
 class CreateRoutinePage extends StatefulWidget {
   const CreateRoutinePage({super.key});
@@ -73,7 +76,11 @@ class _CreateRoutinePageState extends State<CreateRoutinePage> {
                                     controller: _newCatController),
                                 actions: [
                                   ElevatedButton(
-                                      onPressed: () {},
+                                      onPressed: () {
+                                        if (_newCatController.text.isNotEmpty) {
+                                          _addCategory();
+                                        }
+                                      },
                                       child: const Text("Add"))
                                 ],
                               ));
@@ -154,5 +161,16 @@ class _CreateRoutinePageState extends State<CreateRoutinePage> {
             "${selectedTime.hour}:${selectedTime.minute} ${selectedTime.period.name}";
       });
     }
+  }
+
+//create category record
+  _addCategory() async {
+    final categoriyRepository = getIt.get<CategoryRepository>();
+
+    final newCategory = CategoryEntity(_newCatController.text);
+
+    categoriyRepository.saveCategory(newCategory);
+
+    _newCatController.clear();
   }
 }
