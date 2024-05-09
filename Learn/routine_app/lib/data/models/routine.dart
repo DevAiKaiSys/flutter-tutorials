@@ -10,7 +10,7 @@ class Routine {
   Id? id;
   late String title;
   @Index()
-  late DateTime startTime;
+  late String startTime;
   @Index(caseSensitive: false)
   late String day;
   @Index(composite: [CompositeIndex('title')])
@@ -21,6 +21,6 @@ class Routine {
         title: title,
         startTime: startTime,
         day: day,
-        category: (category.value as Category).toEntity());
+        category: category.value?.toEntity());
   }
 }

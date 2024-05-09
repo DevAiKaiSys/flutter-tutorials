@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:routine_app/domain/entities/category.entity.dart';
+import 'package:routine_app/domain/entities/routine.entity.dart';
 import 'package:routine_app/domain/repositories/category_repository.dart';
+import 'package:routine_app/domain/repositories/routine_repository.dart';
 import 'package:routine_app/injection_container.dart';
 
 class CreateRoutinePage extends StatefulWidget {
@@ -12,6 +14,7 @@ class CreateRoutinePage extends StatefulWidget {
 
 class _CreateRoutinePageState extends State<CreateRoutinePage> {
   final categoryRepository = getIt.get<CategoryRepository>();
+  final routineRepository = getIt.get<RoutineRepository>();
   /*List<String> categories = ['work', 'school', 'home'];
   String dropdownValue = 'work';*/
   CategoryEntity? dropdownValue;
@@ -156,9 +159,14 @@ class _CreateRoutinePageState extends State<CreateRoutinePage> {
               ),
             ),
             Align(
-                alignment: Alignment.center,
-                child:
-                    ElevatedButton(onPressed: () {}, child: const Text("Add")))
+              alignment: Alignment.center,
+              child: ElevatedButton(
+                onPressed: () {
+                  _addRoutine();
+                },
+                child: const Text("Add"),
+              ),
+            )
           ]),
         ),
       ),
@@ -210,6 +218,24 @@ class _CreateRoutinePageState extends State<CreateRoutinePage> {
     setState(() {
       // refresh page read all categories & select new category
       dropdownValue = newCategory;
+    });
+  }
+
+  _addRoutine() async {
+    final newRoutine = RoutineEntity(
+      title: _titleController.text,
+      startTime: _timeController.text,
+      day: dropdownDay,
+      category: dropdownValue,
+    );
+
+    routineRepository.saveRoutine(newRoutine);
+
+    _titleController.clear();
+    _timeController.clear();
+    setState(() {
+      dropdownDay = "monday";
+      dropdownValue = null;
     });
   }
 }

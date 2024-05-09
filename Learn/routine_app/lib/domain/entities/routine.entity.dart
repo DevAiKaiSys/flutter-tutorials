@@ -1,10 +1,10 @@
-import 'package:routine_app/domain/entities/category.entity.dart';
+import 'category.entity.dart';
 
 class RoutineEntity {
   final String title;
-  final DateTime startTime;
+  final String startTime;
   final String day;
-  final CategoryEntity category;
+  final CategoryEntity? category;
 
   RoutineEntity(
       {required this.title,
