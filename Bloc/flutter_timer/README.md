@@ -16,3 +16,10 @@
 ├── pubspec.lock
 ├── pubspec.yaml
 ```
+
+# install
+
+```
+flutter pub add flutter_bloc
+flutter pub add equatable
+```
