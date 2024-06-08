@@ -54,7 +54,7 @@ class _WeatherViewState extends State<WeatherView> {
               case WeatherStatus.initial:
                 return const WeatherEmpty();
               case WeatherStatus.loading:
-              // TODO show widget WeatherLoading
+                return const WeatherLoading();
               case WeatherStatus.success:
               // TODO show widget WeatherPopulated
               case WeatherStatus.failure:
