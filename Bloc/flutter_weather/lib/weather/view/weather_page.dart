@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_weather/search/search.dart';
 import 'package:flutter_weather/settings/settings.dart';
 import 'package:flutter_weather/weather/weather.dart';
 import 'package:weather_repository/weather_repository.dart';
@@ -44,7 +45,9 @@ class _WeatherViewState extends State<WeatherView> {
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.search, semanticLabel: 'Search'),
         onPressed: () async {
-          // TODO push to SearchPage
+          final city = await Navigator.of(context).push(SearchPage.route());
+          if (!context.mounted) return;
+          await context.read<WeatherCubit>().fetchWeather(city);
         },
       ),
     );
