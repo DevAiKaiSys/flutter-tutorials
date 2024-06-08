@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_weather/weather/view/weather_page.dart';
+import 'package:flutter_weather/theme/theme.dart';
 import 'package:weather_repository/weather_repository.dart';
+
+import 'weather/weather.dart';
 
 class WeatherApp extends StatelessWidget {
   const WeatherApp({required WeatherRepository weatherRepository, super.key})
@@ -13,7 +15,10 @@ class WeatherApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return RepositoryProvider.value(
       value: _weatherRepository,
-      child: const WeatherAppView(),
+      child: BlocProvider(
+        create: (_) => ThemeCubit(),
+        child: const WeatherAppView(),
+      ),
     );
   }
 }

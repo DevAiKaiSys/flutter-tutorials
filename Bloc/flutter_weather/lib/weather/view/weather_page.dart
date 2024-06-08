@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_weather/search/search.dart';
 import 'package:flutter_weather/settings/settings.dart';
+import 'package:flutter_weather/theme/theme.dart';
 import 'package:flutter_weather/weather/weather.dart';
 import 'package:weather_repository/weather_repository.dart';
 
@@ -41,7 +42,28 @@ class _WeatherViewState extends State<WeatherView> {
           ),
         ],
       ),
-      body: const Center(child: Placeholder()),
+      body: Center(
+        child: BlocConsumer<WeatherCubit, WeatherState>(
+          listener: (context, state) {
+            if (state.status.isSuccess) {
+              context.read<ThemeCubit>().updateTheme(state.weather);
+            }
+          },
+          builder: (context, state) {
+            switch (state.status) {
+              case WeatherStatus.initial:
+                return const WeatherEmpty();
+              case WeatherStatus.loading:
+              // TODO show widget WeatherLoading
+              case WeatherStatus.success:
+              // TODO show widget WeatherPopulated
+              case WeatherStatus.failure:
+                // TODO show widget WeatherError
+                return const WeatherEmpty();
+            }
+          },
+        ),
+      ),
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.search, semanticLabel: 'Search'),
         onPressed: () async {
