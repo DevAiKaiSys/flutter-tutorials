@@ -9,6 +9,12 @@ flutter pub add dev:test
 flutter pub add mocktail
 ```
 
+# Code Generation
+
+```
+dart run build_runner build
+```
+
 # Unit Test
 
 ```

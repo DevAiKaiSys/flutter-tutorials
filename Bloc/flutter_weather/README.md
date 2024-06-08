@@ -21,5 +21,12 @@ flutter_weather
         |-- open_meteo_api_client.dart
       |-- open_meteo_api.dart
     |-- test/
+  |-- weather_repository/
+    |-- lib/
+      |-- src/
+        |-- models/
+          |-- models.dart
+          |-- weather.dart
+    |-- test/
 |-- test/
 ```
