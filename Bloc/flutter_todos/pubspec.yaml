@@ -14,8 +14,11 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   intl: ^0.19.0
+  shared_preferences: ^2.2.3
+  local_storage_todos_api:
+    path: packages/local_storage_todos_api
 
-  flutter_gen: any
+  #flutter_gen: any
 dev_dependencies:
   bloc_test: ^9.1.6
   flutter_test:

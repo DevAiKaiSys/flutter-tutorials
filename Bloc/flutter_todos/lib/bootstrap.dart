@@ -3,6 +3,8 @@ import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_todos/app/app.dart';
+import 'package:todos_api/todos_api.dart';
 
 class AppBlocObserver extends BlocObserver {
   const AppBlocObserver();
@@ -20,7 +22,7 @@ class AppBlocObserver extends BlocObserver {
   }
 }
 
-Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
+/*Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
   FlutterError.onError = (details) {
     log(details.exceptionAsString(), stackTrace: details.stack);
   };
@@ -30,4 +32,16 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
   // Add cross-flavor configuration here
 
   runApp(await builder());
+}*/
+void bootstrap({required TodosApi todosApi}) {
+  FlutterError.onError = (details) {
+    log(details.exceptionAsString(), stackTrace: details.stack);
+  };
+
+  Bloc.observer = const AppBlocObserver();
+
+  runZonedGuarded(
+    () => runApp(const App()),
+    (error, stackTrace) => log(error.toString(), stackTrace: stackTrace),
+  );
 }
