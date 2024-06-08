@@ -7,6 +7,9 @@ flutter_weather
   |-- settings/
   |-- theme/
   |-- weather/
+    |-- cubit/
+      |-- weather_cubit.dart
+      |-- weather_state.dart
   |-- main.dart
 |-- packages/
   |-- open_meteo_api/
@@ -38,6 +41,7 @@ flutter pub add equatable
 flutter pub add json_annotation
 dart pub add dev:build_runner
 dart pub add dev:json_serializable
+flutter pub add hydrated_bloc
 ```
 
 # Code Generation
