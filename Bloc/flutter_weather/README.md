@@ -49,6 +49,7 @@ flutter pub add dev:bloc_test
 flutter pub add mocktail
 
 flutter pub add flutter_bloc
+flutter pub add path_provider
 ```
 
 # Code Generation

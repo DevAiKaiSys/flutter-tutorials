@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_weather/settings/settings.dart';
+import 'package:flutter_weather/weather/weather.dart';
+import 'package:weather_repository/weather_repository.dart';
 
 class WeatherPage extends StatelessWidget {
   const WeatherPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const WeatherView();
+    return BlocProvider(
+      create: (context) => WeatherCubit(context.read<WeatherRepository>()),
+      child: const WeatherView(),
+    );
   }
 }
 
@@ -26,7 +33,9 @@ class _WeatherViewState extends State<WeatherView> {
           IconButton(
             icon: const Icon(Icons.settings),
             onPressed: () {
-              // TODO push to SettingsPage
+              Navigator.of(context).push<void>(
+                SettingsPage.route(context.read<WeatherCubit>()),
+              );
             },
           ),
         ],
