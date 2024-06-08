@@ -6,6 +6,8 @@ flutter_weather
   |-- search/
   |-- settings/
   |-- theme/
+    |-- cubit/
+      |-- theme_cubit.dart
   |-- weather/
     |-- cubit/
       |-- weather_cubit.dart
