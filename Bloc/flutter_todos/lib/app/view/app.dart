@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_todos/l10n/l10n.dart';
+import 'package:flutter_todos/theme/theme.dart';
 import 'package:todos_repository/todos_repository.dart';
 
 class App extends StatelessWidget {
@@ -21,10 +22,12 @@ class AppView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
+      theme: FlutterTodosTheme.light,
+      darkTheme: FlutterTodosTheme.dark,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-      home: Placeholder(),
+      home: const Placeholder(),
     );
   }
 }
