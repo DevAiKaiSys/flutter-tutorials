@@ -23,6 +23,7 @@ class TimerView extends StatelessWidget {
       appBar: AppBar(title: const Text('Flutter Timer')),
       body: const Stack(
         children: [
+          Background(),
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -110,6 +111,25 @@ class Actions extends StatelessWidget {
           ],
         );
       },
+    );
+  }
+}
+
+class Background extends StatelessWidget {
+  const Background({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [
+            Colors.blue.shade50,
+            Colors.blue.shade500,
+          ],
+        ),
+      ),
     );
   }
 }
