@@ -8,6 +8,8 @@ environment:
   flutter: ">=1.17.0"
 
 dependencies:
+  open_meteo_api:
+    path: ../open_meteo_api
   equatable: ^2.0.5
   flutter:
     sdk: flutter
