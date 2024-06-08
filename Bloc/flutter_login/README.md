@@ -11,6 +11,10 @@
 │   │       ├── authentication_bloc.dart
 │   │       ├── authentication_event.dart
 │   │       └── authentication_state.dart
+│   ├── home
+│   │   ├── home.dart
+│   │   └── view
+│   │       └── home_page.dart
 │   ├── login
 │   │   ├── bloc
 │   │   │   ├── login_bloc.dart
