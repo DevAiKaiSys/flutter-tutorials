@@ -32,4 +32,6 @@
 flutter pub add flutter_bloc 
 flutter pub add equatable
 flutter pub add http
+flutter pub add stream_transform
+flutter pub add bloc_concurrency
 ```
