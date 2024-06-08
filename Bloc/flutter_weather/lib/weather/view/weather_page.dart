@@ -58,8 +58,7 @@ class _WeatherViewState extends State<WeatherView> {
               case WeatherStatus.success:
               // TODO show widget WeatherPopulated
               case WeatherStatus.failure:
-                // TODO show widget WeatherError
-                return const WeatherEmpty();
+                return const WeatherError();
             }
           },
         ),
