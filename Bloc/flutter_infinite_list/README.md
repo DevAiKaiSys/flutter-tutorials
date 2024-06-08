@@ -31,4 +31,5 @@
 ```
 flutter pub add flutter_bloc 
 flutter pub add equatable
+flutter pub add http
 ```
