@@ -21,6 +21,7 @@ dependencies:
     path: packages/todos_api
   todos_repository:
     path: packages/todos_repository
+  equatable: ^2.0.5
 
   #flutter_gen: any
 dev_dependencies:

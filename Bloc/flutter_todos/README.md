@@ -15,6 +15,7 @@
 
 ```
 flutter pub add shared_preferences
+flutter pub add equatable
 ```
 
 ![coverage][coverage_badge]
