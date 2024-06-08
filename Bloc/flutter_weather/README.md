@@ -44,6 +44,9 @@ flutter pub add json_annotation
 dart pub add dev:build_runner
 dart pub add dev:json_serializable
 flutter pub add hydrated_bloc
+
+flutter pub add dev:bloc_test
+flutter pub add mocktail
 ```
 
 # Code Generation
