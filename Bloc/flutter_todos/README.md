@@ -16,6 +16,15 @@
 ```
 flutter pub add shared_preferences
 flutter pub add equatable
+
+dart pub global activate flutter_gen
+```
+
+# Run l10n
+
+update file app_en.arb
+```
+flutter gen-l10n
 ```
 
 ![coverage][coverage_badge]
