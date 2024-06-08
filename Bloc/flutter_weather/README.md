@@ -54,3 +54,9 @@ flutter pub add mocktail
 ```
 dart run build_runner build
 ```
+
+# Unit Test
+
+```
+flutter test -r expanded
+```
