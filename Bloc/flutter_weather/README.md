@@ -47,6 +47,8 @@ flutter pub add hydrated_bloc
 
 flutter pub add dev:bloc_test
 flutter pub add mocktail
+
+flutter pub add flutter_bloc
 ```
 
 # Code Generation
