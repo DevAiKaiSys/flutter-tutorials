@@ -16,6 +16,20 @@ class TimerBloc extends Bloc<TimerEvent, TimerState> {
   TimerBloc({required Ticker ticker})
       : _ticker = ticker,
         super(const TimerInitial(_duration)) {
-    // TODO: implement event handlers
+    on<TimerStarted>(_onStarted);
+  }
+
+  @override
+  Future<void> close() {
+    _tickerSubscription?.cancel();
+    return super.close();
+  }
+
+  void _onStarted(TimerStarted event, Emitter<TimerState> emit) {
+    emit(TimerRunInProgress(event.duration));
+    _tickerSubscription?.cancel();
+    _tickerSubscription = _ticker
+        .tick(ticks: event.duration)
+        .listen((duration) => add(_TimerTicked(duration: duration)));
   }
 }
