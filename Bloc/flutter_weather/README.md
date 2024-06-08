@@ -30,3 +30,18 @@ flutter_weather
     |-- test/
 |-- test/
 ```
+
+# install
+
+```
+flutter pub add equatable
+flutter pub add json_annotation
+dart pub add dev:build_runner
+dart pub add dev:json_serializable
+```
+
+# Code Generation
+
+```
+dart run build_runner build
+```
