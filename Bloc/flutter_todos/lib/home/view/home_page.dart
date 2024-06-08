@@ -31,7 +31,7 @@ class HomeView extends StatelessWidget {
         shape: const CircleBorder(),
         key: const Key('homeView_addTodo_floatingActionButton'),
         onPressed: () {
-          // TODO push to TodoPage
+          // TODOpush to `Todo`Page
         },
         child: const Icon(Icons.add),
       ),
