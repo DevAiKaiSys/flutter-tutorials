@@ -11,6 +11,10 @@
 │   │       ├── authentication_bloc.dart
 │   │       ├── authentication_event.dart
 │   │       └── authentication_state.dart
+│   ├── splash
+│   │   ├── splash.dart
+│   │   └── view
+│   │       └── splash_page.dart
 │   ├── main.dart
 ├── packages
 │   ├── authentication_repository
