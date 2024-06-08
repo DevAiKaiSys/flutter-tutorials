@@ -5,6 +5,7 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_todos/app/app.dart';
 import 'package:todos_api/todos_api.dart';
+import 'package:todos_repository/todos_repository.dart';
 
 class AppBlocObserver extends BlocObserver {
   const AppBlocObserver();
@@ -40,8 +41,10 @@ void bootstrap({required TodosApi todosApi}) {
 
   Bloc.observer = const AppBlocObserver();
 
+  final todosRepository = TodosRepository(todosApi: todosApi);
+
   runZonedGuarded(
-    () => runApp(const App()),
+    () => runApp(App(todosRepository: todosRepository)),
     (error, stackTrace) => log(error.toString(), stackTrace: stackTrace),
   );
 }

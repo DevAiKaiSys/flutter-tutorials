@@ -610,9 +610,16 @@ packages:
     source: hosted
     version: "0.6.0"
   todos_api:
-    dependency: transitive
+    dependency: "direct main"
     description:
       path: "packages/todos_api"
+      relative: true
+    source: path
+    version: "0.1.0+1"
+  todos_repository:
+    dependency: "direct main"
+    description:
+      path: "packages/todos_repository"
       relative: true
     source: path
     version: "0.1.0+1"

@@ -17,6 +17,10 @@ dependencies:
   shared_preferences: ^2.2.3
   local_storage_todos_api:
     path: packages/local_storage_todos_api
+  todos_api:
+    path: packages/todos_api
+  todos_repository:
+    path: packages/todos_repository
 
   #flutter_gen: any
 dev_dependencies:
