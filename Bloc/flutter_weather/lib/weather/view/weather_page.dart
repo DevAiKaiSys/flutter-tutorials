@@ -56,7 +56,13 @@ class _WeatherViewState extends State<WeatherView> {
               case WeatherStatus.loading:
                 return const WeatherLoading();
               case WeatherStatus.success:
-              // TODO show widget WeatherPopulated
+                return WeatherPopulated(
+                  weather: state.weather,
+                  units: state.temperatureUnits,
+                  onRefresh: () {
+                    return context.read<WeatherCubit>().refreshWeather();
+                  },
+                );
               case WeatherStatus.failure:
                 return const WeatherError();
             }
