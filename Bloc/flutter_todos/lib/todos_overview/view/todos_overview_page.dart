@@ -29,7 +29,9 @@ class TodosOverviewView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(l10n.todosOverviewAppBarTitle),
-        // TODOadd actions
+        actions: const [
+          TodosOverviewOptionsButton(),
+        ],
       ),
       body: MultiBlocListener(
         listeners: [
