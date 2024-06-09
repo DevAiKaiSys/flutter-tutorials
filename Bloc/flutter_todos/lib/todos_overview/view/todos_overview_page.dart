@@ -97,7 +97,28 @@ class TodosOverviewView extends StatelessWidget {
 
             return CupertinoScrollbar(
               child: ListView(
-                
+                children: [
+                  for (final todo in state.filteredTodos)
+                    TodoListTile(
+                      todo: todo,
+                      onToggleCompleted: (isCompleted) {
+                        context.read<TodosOverviewBloc>().add(
+                              TodosOverviewTodoCompletionToggled(
+                                todo: todo,
+                                isCompleted: isCompleted,
+                              ),
+                            );
+                      },
+                      onDismissed: (_) {
+                        context
+                            .read<TodosOverviewBloc>()
+                            .add(TodosOverviewTodoDeleted(todo));
+                      },
+                      onTap: () {
+                        // TODOpush to Edit`Todo`Page
+                      },
+                    ),
+                ],
               ),
             );
           },
