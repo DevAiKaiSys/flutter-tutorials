@@ -9,15 +9,21 @@ class BottomNavBar extends StatefulWidget {
 }
 
 class _BottomNavBarState extends State<BottomNavBar> {
+  //list is iterated using index
+  final appScreens = [
+    const Center(child: Text("Home")),
+    const Center(child: Text("Search")),
+    const Center(child: Text("Tickets")),
+    const Center(child: Text("Profile")),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text("My tickets"),
       ),
-      body: const Center(
-        child: Text("Ticket info"),
-      ),
+      body: appScreens[2],
       bottomNavigationBar: BottomNavigationBar(
         selectedItemColor: Colors.blueGrey,
         unselectedItemColor: const Color(0xFF526400),
