@@ -21,8 +21,9 @@ class _BottomNavBarState extends State<BottomNavBar> {
   int _selectedIndex = 0;
 
   void _onItemTapped(int index) {
-    _selectedIndex = index;
-    print("Tapped index is $_selectedIndex");
+    setState(() {
+      _selectedIndex = index;
+    });
   }
 
   @override
@@ -33,6 +34,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
       ),
       body: appScreens[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _selectedIndex,
         onTap: _onItemTapped,
         selectedItemColor: Colors.blueGrey,
         unselectedItemColor: const Color(0xFF526400),
