@@ -17,7 +17,15 @@ class _BottomNavBarState extends State<BottomNavBar> {
       body: const Center(
         child: Text("Ticket info"),
       ),
-      bottomNavigationBar: const Text("Bottom"),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
+          BottomNavigationBarItem(icon: Icon(Icons.search), label: "Search"),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.airplane_ticket), label: "Tickets"),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
+        ],
+      ),
     );
   }
 }
