@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ticket_app/resentation_layer/base/res/media.dart';
 import 'package:ticket_app/resentation_layer/base/res/styles/app_styles.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -36,7 +37,7 @@ class HomeScreen extends StatelessWidget {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         image: const DecorationImage(
-                          image: AssetImage("assets/images/logo.png"),
+                          image: AssetImage(AppMedia.logo),
                         ),
                       ),
                     ),
