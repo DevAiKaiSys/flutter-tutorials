@@ -2,6 +2,7 @@ import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:ticket_app/resentation_layer/base/res/media.dart';
 import 'package:ticket_app/resentation_layer/base/res/styles/app_styles.dart';
+import 'package:ticket_app/resentation_layer/base/widgets/app_double_text.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -12,6 +13,7 @@ class HomeScreen extends StatelessWidget {
       backgroundColor: AppStyles.bgColor,
       body: ListView(
         children: [
+          const SizedBox(height: 40),
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Column(
@@ -64,9 +66,14 @@ class HomeScreen extends StatelessWidget {
                     ],
                   ),
                 ),
+                const SizedBox(height: 40),
+                const AppDoubleText(
+                  bigText: "Upcoming flights",
+                  smallText: "view all",
+                ),
               ],
             ),
-          )
+          ),
         ],
       ),
     );
