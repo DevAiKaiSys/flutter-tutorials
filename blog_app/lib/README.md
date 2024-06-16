@@ -22,6 +22,8 @@ Separation by Layers
 │   │   │   ├── widgets
 │   │   │   │   └── widgets.dart*
 │   │   │   ├── auth.dart*
+│   │   ├── widgets           # Reusable widgets
+│   │   │   └── widgets.dart*
 │   │   ├── init_dependencies.dart
 │   │   ├── main.dart
 ├── packags
