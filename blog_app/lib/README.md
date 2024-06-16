@@ -20,16 +20,28 @@ Separation by Layers
 │   │   │   │   ├── auth_page.dart
 │   │   │   │   └── view.dart*
 │   │   │   ├── widgets
-│   │   │   │   └── bottom_loader.dart
-│   │   │   │   └── auth_list_item.dart
 │   │   │   │   └── widgets.dart*
 │   │   │   ├── auth.dart*
 │   │   ├── main.dart
 ├── packags
 │   ├── data_layer
+│   │   ├── core
+│   │   │   ├── error
+│   │   │   │   └── exceptions.dart
 │   │   ├── auth
+│   │   │   ├── auth_api.dart           # abstract api
+│   │   │   ├── supabase_auth_api.dart    # implements api
 │   ├── repository_layer
+│   │   ├── core
+│   │   │   ├── error
+│   │   │   │   └── failures.dart
+│   │   │   ├── usecase
+│   │   │   │   └── usecase.dart      # abstract usecase
 │   │   ├── auth
+│   │   │   ├── usecases
+│   │   │   │   └── user_sign_up.dart      # implements usecase
+│   │   │   ├── auth_repository.dart   # abstract repository
+│   │   │   ├── auth_repository_impl.dart  # implements repository
 ```
 
 refer: Bloc Tutorials [Flutter Weather](https://bloclibrary.dev/tutorials/flutter-weather/)
