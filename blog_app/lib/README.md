@@ -45,3 +45,19 @@ Separation by Layers
 ```
 
 refer: Bloc Tutorials [Flutter Weather](https://bloclibrary.dev/tutorials/flutter-weather/)
+
+# install
+
+```
+flutter pub add flutter_bloc
+```
+
+# add repository_layer, data_layer packages
+
+```
+dependencies:
+  repository_layer:
+    path: packages/repository_layer
+  data_layer:
+    path: packages/data_layer
+```
