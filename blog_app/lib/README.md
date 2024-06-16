@@ -22,6 +22,7 @@ Separation by Layers
 │   │   │   ├── widgets
 │   │   │   │   └── widgets.dart*
 │   │   │   ├── auth.dart*
+│   │   ├── init_dependencies.dart
 │   │   ├── main.dart
 ├── packags
 │   ├── data_layer
@@ -36,7 +37,7 @@ Separation by Layers
 │   │   │   ├── error
 │   │   │   │   └── failures.dart
 │   │   │   ├── usecase
-│   │   │   │   └── usecase.dart      # abstract usecase
+│   │   │   │   └── usecase.dart      # abstract usecase method call
 │   │   ├── auth
 │   │   │   ├── usecases
 │   │   │   │   └── user_sign_up.dart      # implements usecase
@@ -50,6 +51,7 @@ refer: Bloc Tutorials [Flutter Weather](https://bloclibrary.dev/tutorials/flutte
 
 ```
 flutter pub add flutter_bloc
+flutter pub add get_it
 ```
 
 # add repository_layer, data_layer packages
