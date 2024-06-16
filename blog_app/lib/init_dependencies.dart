@@ -1,3 +1,4 @@
+import 'package:blog_app/business_logic_layer/app_user/cubit/app_user_cubit.dart';
 import 'package:blog_app/business_logic_layer/auth/bloc/auth_bloc.dart';
 import 'package:blog_app/core/secrets/app_secrets.dart';
 import 'package:data_layer/data_layer.dart';
@@ -33,9 +34,11 @@ void _initAuth() {
     ..registerFactory(() => CurrentUser(serviceLocator()))
 
     // business_logic_layer
+    ..registerLazySingleton(() => AppUserCubit())
     ..registerLazySingleton(() => AuthBloc(
           userSignUp: serviceLocator(),
           userLogin: serviceLocator(),
           currentUser: serviceLocator(),
+          appUserCubit: serviceLocator(),
         ));
 }
