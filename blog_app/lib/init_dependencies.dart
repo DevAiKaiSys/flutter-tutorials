@@ -21,18 +21,18 @@ Future<void> initDependencies() async {
 void _initAuth() {
   // data_layer
   serviceLocator
-      .registerFactory<AuthApi>(() => SupabaseAuthApi(serviceLocator()));
+    ..registerFactory<AuthApi>(() => SupabaseAuthApi(serviceLocator()))
 
-  // repository_layer
-  serviceLocator.registerFactory<AuthRepository>(
-      () => AuthRepositoryImpl(serviceLocator()));
-  // usecases
-  serviceLocator.registerFactory(() => UserSignUp(serviceLocator()));
-  serviceLocator.registerFactory(() => UserLogin(serviceLocator()));
+    // repository_layer
+    ..registerFactory<AuthRepository>(
+        () => AuthRepositoryImpl(serviceLocator()))
+    // usecases
+    ..registerFactory(() => UserSignUp(serviceLocator()))
+    ..registerFactory(() => UserLogin(serviceLocator()))
 
-  // business_logic_layer
-  serviceLocator.registerLazySingleton(() => AuthBloc(
-        userSignUp: serviceLocator(),
-        userLogin: serviceLocator(),
-      ));
+    // business_logic_layer
+    ..registerLazySingleton(() => AuthBloc(
+          userSignUp: serviceLocator(),
+          userLogin: serviceLocator(),
+        ));
 }
