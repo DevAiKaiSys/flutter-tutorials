@@ -1,0 +1,65 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "blog_app",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "blog_app (profile mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "blog_app (release mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "data_layer",
+            "cwd": "packages\\data_layer",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "data_layer (profile mode)",
+            "cwd": "packages\\data_layer",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "data_layer (release mode)",
+            "cwd": "packages\\data_layer",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "repository_layer",
+            "cwd": "packages\\repository_layer",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "repository_layer (profile mode)",
+            "cwd": "packages\\repository_layer",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "repository_layer (release mode)",
+            "cwd": "packages\\repository_layer",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        }
+    ]
+}

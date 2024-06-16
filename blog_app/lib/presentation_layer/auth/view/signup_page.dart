@@ -1,5 +1,7 @@
+import 'package:blog_app/business_logic_layer/auth/bloc/auth_bloc.dart';
 import 'package:blog_app/core/theme/app_pallete.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../widgets/widgets.dart';
 import 'view.dart';
@@ -63,7 +65,20 @@ class _SignupPageState extends State<SignupPage> {
                 isObscureText: true,
               ),
               const SizedBox(height: 20),
-              const AuthGradientButton(buttonText: "Sign Up"),
+              AuthGradientButton(
+                buttonText: "Sign Up",
+                onPressed: () {
+                  if (formKey.currentState!.validate()) {
+                    context.read<AuthBloc>().add(
+                          AuthSignUp(
+                            email: emailController.text.trim(),
+                            password: passwordController.text.trim(),
+                            name: nameController.text.trim(),
+                          ),
+                        );
+                  }
+                },
+              ),
               const SizedBox(height: 20),
               GestureDetector(
                 onTap: () {
