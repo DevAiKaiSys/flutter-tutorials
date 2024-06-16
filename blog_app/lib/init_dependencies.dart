@@ -4,6 +4,7 @@ import 'package:data_layer/data_layer.dart';
 import 'package:get_it/get_it.dart';
 import 'package:repository_layer/auth/auth_repository.dart';
 import 'package:repository_layer/auth/auth_repository_impl.dart';
+import 'package:repository_layer/auth/usecases/user_login.dart';
 import 'package:repository_layer/auth/usecases/user_sign_up.dart';
 
 final serviceLocator = GetIt.instance;
@@ -25,10 +26,13 @@ void _initAuth() {
   // repository_layer
   serviceLocator.registerFactory<AuthRepository>(
       () => AuthRepositoryImpl(serviceLocator()));
+  // usecases
   serviceLocator.registerFactory(() => UserSignUp(serviceLocator()));
+  serviceLocator.registerFactory(() => UserLogin(serviceLocator()));
 
   // business_logic_layer
   serviceLocator.registerLazySingleton(() => AuthBloc(
         userSignUp: serviceLocator(),
+        userLogin: serviceLocator(),
       ));
 }
