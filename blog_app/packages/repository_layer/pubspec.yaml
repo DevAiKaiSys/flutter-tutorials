@@ -2,12 +2,15 @@ name: repository_layer
 description: "A new Flutter package project."
 version: 0.0.1
 homepage:
+publish_to: none
 
 environment:
   sdk: '>=3.4.3 <4.0.0'
   flutter: ">=1.17.0"
 
 dependencies:
+  data_layer:
+    path: ../data_layer
   flutter:
     sdk: flutter
   fpdart: ^1.1.0
