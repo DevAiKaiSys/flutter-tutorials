@@ -4,6 +4,7 @@ import 'package:data_layer/data_layer.dart';
 import 'package:get_it/get_it.dart';
 import 'package:repository_layer/auth/auth_repository.dart';
 import 'package:repository_layer/auth/auth_repository_impl.dart';
+import 'package:repository_layer/auth/usecases/current_user.dart';
 import 'package:repository_layer/auth/usecases/user_login.dart';
 import 'package:repository_layer/auth/usecases/user_sign_up.dart';
 
@@ -29,10 +30,12 @@ void _initAuth() {
     // usecases
     ..registerFactory(() => UserSignUp(serviceLocator()))
     ..registerFactory(() => UserLogin(serviceLocator()))
+    ..registerFactory(() => CurrentUser(serviceLocator()))
 
     // business_logic_layer
     ..registerLazySingleton(() => AuthBloc(
           userSignUp: serviceLocator(),
           userLogin: serviceLocator(),
+          currentUser: serviceLocator(),
         ));
 }
