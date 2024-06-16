@@ -1,4 +1,5 @@
 import 'package:data_layer/auth/auth_api.dart';
+import 'package:data_layer/auth/models/user_model.dart';
 import 'package:data_layer/core/error/exceptions.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -7,14 +8,14 @@ class SupabaseAuthApi implements AuthApi {
   SupabaseAuthApi(this.supabaseClient);
 
   @override
-  Future<String> loginWithEmailPassword(
+  Future<UserModel> loginWithEmailPassword(
       {required String email, required String password}) {
     // TODO: implement loginWithEmailPassword
     throw UnimplementedError();
   }
 
   @override
-  Future<String> signUpWithEmailPassword({
+  Future<UserModel> signUpWithEmailPassword({
     required String name,
     required String email,
     required String password,
@@ -28,7 +29,7 @@ class SupabaseAuthApi implements AuthApi {
       if (response.user == null) {
         throw const ServerException("User is null!");
       }
-      return response.user!.id;
+      return UserModel.fromJson(response.user!.toJson());
     } catch (e) {
       throw ServerException(e.toString());
     }

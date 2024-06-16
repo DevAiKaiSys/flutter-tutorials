@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
+import 'package:repository_layer/auth/entities/user_entity.dart';
 import 'package:repository_layer/auth/usecases/user_sign_up.dart';
 
 part 'auth_event.dart';
@@ -20,7 +21,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
       res.fold(
         (failure) => emit(AuthFailure(failure.message)),
-        (uid) => emit(AuthSuccess(uid)),
+        (user) => emit(AuthSuccess(user)),
       );
     });
   }
