@@ -54,6 +54,7 @@ refer: Bloc Tutorials [Flutter Weather](https://bloclibrary.dev/tutorials/flutte
 ```
 flutter pub add flutter_bloc
 flutter pub add get_it
+flutter pub add dotted_border
 ```
 
 # add repository_layer, data_layer packages
