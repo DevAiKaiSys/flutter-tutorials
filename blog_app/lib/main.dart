@@ -1,5 +1,6 @@
 import 'package:blog_app/business_logic_layer/app_user/cubit/app_user_cubit.dart';
 import 'package:blog_app/business_logic_layer/auth/bloc/auth_bloc.dart';
+import 'package:blog_app/business_logic_layer/blog/bloc/blog_bloc.dart';
 import 'package:blog_app/core/theme/theme.dart';
 import 'package:blog_app/init_dependencies.dart';
 import 'package:blog_app/presentation_layer/blog/view/blog_page.dart';
@@ -20,6 +21,9 @@ Future<void> main() async {
       ),
       BlocProvider(
         create: (_) => serviceLocator<AuthBloc>(),
+      ),
+      BlocProvider(
+        create: (_) => serviceLocator<BlogBloc>(),
       ),
     ],
     child: const MyApp(),
