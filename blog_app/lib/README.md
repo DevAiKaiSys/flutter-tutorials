@@ -56,6 +56,7 @@ flutter pub add flutter_bloc
 flutter pub add get_it
 flutter pub add dotted_border
 flutter pub add image_picker
+flutter pub add intl
 ```
 
 # add repository_layer, data_layer packages

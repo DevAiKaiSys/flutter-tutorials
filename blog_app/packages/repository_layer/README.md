@@ -2,6 +2,7 @@
 
 ```
 flutter pub add fpdart
+flutter pub add uuid
 ```
 
 # add data_layer package

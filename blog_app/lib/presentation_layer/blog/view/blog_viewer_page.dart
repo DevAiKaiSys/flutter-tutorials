@@ -1,5 +1,6 @@
 import 'package:blog_app/core/theme/app_pallete.dart';
 import 'package:blog_app/core/utils/calculate_reading_time.dart';
+import 'package:blog_app/core/utils/format_date.dart';
 import 'package:flutter/material.dart';
 import 'package:repository_layer/blog/entities/blog_entity.dart';
 
@@ -43,7 +44,7 @@ class BlogViewerPage extends StatelessWidget {
                 ),
                 const SizedBox(height: 5),
                 Text(
-                  '${blog.updatedAt} . ${calculateReadingTime(blog.content)} min',
+                  '${formatDateBydMMMYYYY(blog.updatedAt)} . ${calculateReadingTime(blog.content)} min',
                   style: const TextStyle(
                     fontWeight: FontWeight.w500,
                     color: AppPallete.greyColor,
