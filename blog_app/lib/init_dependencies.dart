@@ -11,6 +11,7 @@ import 'package:repository_layer/auth/usecases/user_login.dart';
 import 'package:repository_layer/auth/usecases/user_sign_up.dart';
 import 'package:repository_layer/blog/blog_repository.dart';
 import 'package:repository_layer/blog/blog_repository_impl.dart';
+import 'package:repository_layer/blog/usecases/get_all_blogs.dart';
 import 'package:repository_layer/blog/usecases/upload_blog.dart';
 
 final serviceLocator = GetIt.instance;
@@ -59,9 +60,11 @@ void _initBlog() {
         () => BlogRepositoryImpl(serviceLocator()))
     // usecases
     ..registerFactory(() => UploadBlog(serviceLocator()))
+    ..registerFactory(() => GetAllBlogs(serviceLocator()))
 
     // business_logic_layer
     ..registerLazySingleton(() => BlogBloc(
           uploadBlog: serviceLocator(),
+          getAllBlogs: serviceLocator(),
         ));
 }

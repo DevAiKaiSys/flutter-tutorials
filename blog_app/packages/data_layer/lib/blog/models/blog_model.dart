@@ -6,6 +6,7 @@ class BlogModel {
   final String imageUrl;
   final List<String> topics;
   final DateTime updatedAt;
+  final String? posterName;
 
   BlogModel({
     required this.id,
@@ -15,6 +16,7 @@ class BlogModel {
     required this.imageUrl,
     required this.topics,
     required this.updatedAt,
+    this.posterName,
   });
 
   Map<String, dynamic> toJson() {
@@ -43,15 +45,15 @@ class BlogModel {
     );
   }
 
-  BlogModel copyWith({
-    String? id,
-    String? posterId,
-    String? title,
-    String? content,
-    String? imageUrl,
-    List<String>? topics,
-    DateTime? updatedAt,
-  }) {
+  BlogModel copyWith(
+      {String? id,
+      String? posterId,
+      String? title,
+      String? content,
+      String? imageUrl,
+      List<String>? topics,
+      DateTime? updatedAt,
+      String? posterName}) {
     return BlogModel(
       id: id ?? this.id,
       posterId: posterId ?? this.posterId,
@@ -60,6 +62,7 @@ class BlogModel {
       imageUrl: imageUrl ?? this.imageUrl,
       topics: topics ?? this.topics,
       updatedAt: updatedAt ?? this.updatedAt,
+      posterName: posterName ?? this.posterName,
     );
   }
 }

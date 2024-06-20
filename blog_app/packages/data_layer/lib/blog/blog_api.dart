@@ -8,4 +8,5 @@ abstract interface class BlogApi {
     required File image,
     required BlogModel blog,
   });
+  Future<List<BlogModel>> getAllBlogs();
 }
