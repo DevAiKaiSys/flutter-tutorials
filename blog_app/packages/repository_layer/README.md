@@ -3,6 +3,7 @@
 ```
 flutter pub add fpdart
 flutter pub add uuid
+flutter pub add internet_connection_checker_plus
 ```
 
 # add data_layer package
