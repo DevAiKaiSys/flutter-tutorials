@@ -1,3 +1,4 @@
+import 'package:blog_app/core/utils/calculate_reading_time.dart';
 import 'package:flutter/material.dart';
 import 'package:repository_layer/blog/entities/blog_entity.dart';
 
@@ -14,7 +15,9 @@ class BlogCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 200,
-      margin: const EdgeInsets.all(16),
+      margin: const EdgeInsets.all(16).copyWith(
+        bottom: 4,
+      ),
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: color,
@@ -49,7 +52,7 @@ class BlogCard extends StatelessWidget {
               ),
             ],
           ),
-          const Text('1 min'),
+          Text('${calculateReadingTime(blog.content)} min'),
         ],
       ),
     );
