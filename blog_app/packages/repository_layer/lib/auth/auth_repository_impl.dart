@@ -5,14 +5,34 @@ import 'package:fpdart/fpdart.dart';
 import 'package:repository_layer/auth/auth_repository.dart';
 import 'package:repository_layer/auth/entities/user_entity.dart';
 import 'package:repository_layer/core/error/failures.dart';
+import 'package:repository_layer/core/network/connection_checker.dart';
 
 class AuthRepositoryImpl implements AuthRepository {
   final AuthApi authApi;
-  AuthRepositoryImpl(this.authApi);
+  final ConnectionChecker connectionChecker;
+  AuthRepositoryImpl(
+    this.authApi,
+    this.connectionChecker,
+  );
 
   @override
   Future<Either<Failure, UserEntity>> currentUser() async {
     try {
+      if (!await (connectionChecker.isConnected)) {
+        final session = authApi.currentUserSession;
+
+        if (session == null) {
+          return left(Failure('User not logged in!'));
+        }
+
+        return right(
+          UserEntity(
+            id: session.user.id,
+            email: session.user.email ?? '',
+            name: '',
+          ),
+        );
+      }
       final user = await authApi.getCurrentUserData();
       if (user == null) {
         return left(Failure('User not logged in!'));
@@ -54,6 +74,9 @@ class AuthRepositoryImpl implements AuthRepository {
   Future<Either<Failure, UserEntity>> _getUser(
       Future<UserModel> Function() fn) async {
     try {
+      if (!await (connectionChecker.isConnected)) {
+        return left(Failure("No internet connection!"));
+      }
       final user = await fn();
 
       return right(UserEntity(id: user.id, email: user.email, name: user.name));
