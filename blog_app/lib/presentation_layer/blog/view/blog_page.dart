@@ -1,5 +1,7 @@
 import 'package:blog_app/business_logic_layer/blog/bloc/blog_bloc.dart';
+import 'package:blog_app/core/theme/app_pallete.dart';
 import 'package:blog_app/presentation_layer/blog/view/add_new_blog_page.dart';
+import 'package:blog_app/presentation_layer/blog/widgets/blog_card.dart';
 import 'package:blog_app/presentation_layer/widgets/loader.dart';
 import 'package:blog_app/presentation_layer/widgets/show_snackbar.dart';
 import 'package:flutter/cupertino.dart';
@@ -52,7 +54,10 @@ class _BlogPageState extends State<BlogPage> {
               itemCount: state.blogs.length,
               itemBuilder: (context, index) {
                 final blog = state.blogs[index];
-                return Text(blog.title);
+                return BlogCard(
+                  blog: blog,
+                  color: AppPallete.gradient1,
+                );
               },
             );
           }

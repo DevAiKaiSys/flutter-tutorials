@@ -5,7 +5,7 @@ import 'package:blog_app/business_logic_layer/blog/bloc/blog_bloc.dart';
 import 'package:blog_app/core/theme/app_pallete.dart';
 import 'package:blog_app/core/utils/pick_image.dart';
 import 'package:blog_app/presentation_layer/blog/view/blog_page.dart';
-import 'package:blog_app/presentation_layer/widgets/blog_editor.dart';
+import 'package:blog_app/presentation_layer/blog/widgets/blog_editor.dart';
 import 'package:blog_app/presentation_layer/widgets/loader.dart';
 import 'package:blog_app/presentation_layer/widgets/show_snackbar.dart';
 import 'package:dotted_border/dotted_border.dart';
