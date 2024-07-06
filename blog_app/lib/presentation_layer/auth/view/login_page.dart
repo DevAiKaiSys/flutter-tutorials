@@ -1,5 +1,6 @@
 import 'package:blog_app/business_logic_layer/auth/bloc/auth_bloc.dart';
 import 'package:blog_app/core/theme/app_pallete.dart';
+import 'package:blog_app/presentation_layer/blog/view/blog_page.dart';
 import 'package:blog_app/presentation_layer/widgets/loader.dart';
 import 'package:blog_app/presentation_layer/widgets/show_snackbar.dart';
 import 'package:flutter/material.dart';
@@ -40,7 +41,12 @@ class _LoginPageState extends State<LoginPage> {
             if (state is AuthFailure) {
               showSnackBar(context, state.message);
             } else if (state is AuthSuccess) {
-              showSnackBar(context, "Login success");
+              /* showSnackBar(context, "Login success"); */
+              Navigator.pushAndRemoveUntil(
+                context,
+                BlogPage.route(),
+                (route) => false,
+              );
             }
           },
           builder: (context, state) {

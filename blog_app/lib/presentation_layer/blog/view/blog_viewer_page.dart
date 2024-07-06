@@ -54,7 +54,18 @@ class BlogViewerPage extends StatelessWidget {
                 const SizedBox(height: 20),
                 ClipRRect(
                   borderRadius: BorderRadius.circular(10),
-                  child: Image.network(blog.imageUrl),
+                  child: Image.network(
+                    blog.imageUrl,
+                    errorBuilder: (BuildContext context, Object exception,
+                        StackTrace? stackTrace) {
+                      // Handle error here, for example log the error
+                      print('Failed to load image: $exception');
+                      return Container(
+                        color: Colors.grey,
+                        child: Icon(Icons.error),
+                      );
+                    },
+                  ),
                 ),
                 const SizedBox(height: 20),
                 Text(

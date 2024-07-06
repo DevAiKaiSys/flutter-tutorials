@@ -3,6 +3,13 @@
 ```
 flutter pub add supabase_flutter
 flutter pub add shared_preferences
+flutter pub add path_provider
+```
+
+```
+dependencies:
+  hive: ^4.0.0-dev.2
+  isar_flutter_libs: ^4.0.0-dev.14
 ```
 
 # export dependencies

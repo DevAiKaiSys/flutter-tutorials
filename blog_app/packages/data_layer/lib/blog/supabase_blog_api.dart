@@ -58,4 +58,9 @@ class SupabaseBlogApi implements BlogApi {
       throw ServerException(e.toString());
     }
   }
+
+  @override
+  void uploadLocalBlogs({required List<BlogModel> blogs}) {
+    // TODO: implement uploadLocalBlogs
+  }
 }

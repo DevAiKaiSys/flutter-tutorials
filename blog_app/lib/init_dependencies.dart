@@ -2,6 +2,7 @@ import 'package:blog_app/business_logic_layer/app_user/cubit/app_user_cubit.dart
 import 'package:blog_app/business_logic_layer/auth/bloc/auth_bloc.dart';
 import 'package:blog_app/business_logic_layer/blog/bloc/blog_bloc.dart';
 import 'package:blog_app/core/secrets/app_secrets.dart';
+import 'package:data_layer/blog/local_database/hive_blog_api.dart';
 import 'package:data_layer/data_layer.dart';
 import 'package:get_it/get_it.dart';
 import 'package:repository_layer/auth/auth_repository_impl.dart';
@@ -26,6 +27,9 @@ Future<void> initDependencies() async {
     anonKey: AppSecrets.supabaseAnonKey,
   );
   serviceLocator.registerLazySingleton(() => supabase.client);
+
+  Hive.defaultDirectory = (await getApplicationDocumentsDirectory()).path;
+  serviceLocator.registerLazySingleton(() => Hive.box(name: 'blogs'));
 
   serviceLocator.registerFactory(() => InternetConnection());
 
@@ -65,10 +69,14 @@ void _initBlog() {
   // data_layer
   serviceLocator
     ..registerFactory<BlogApi>(() => SupabaseBlogApi(serviceLocator()))
+    ..registerFactory<HiveBlogApi>(() => HiveBlogApi(serviceLocator()))
 
     // repository_layer
-    ..registerFactory<BlogRepository>(
-        () => BlogRepositoryImpl(serviceLocator()))
+    ..registerFactory<BlogRepository>(() => BlogRepositoryImpl(
+          serviceLocator(),
+          serviceLocator(),
+          serviceLocator(),
+        ))
     // usecases
     ..registerFactory(() => UploadBlog(serviceLocator()))
     ..registerFactory(() => GetAllBlogs(serviceLocator()))
