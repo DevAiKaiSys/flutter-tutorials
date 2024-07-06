@@ -54,6 +54,8 @@ class SupabaseBlogApi implements BlogApi {
             ),
           )
           .toList();
+    } on PostgrestException catch (e) {
+      throw ServerException(e.message);
     } catch (e) {
       throw ServerException(e.toString());
     }

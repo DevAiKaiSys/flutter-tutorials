@@ -4,6 +4,7 @@ import 'package:data_layer/data_layer.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:repository_layer/auth/auth_repository.dart';
 import 'package:repository_layer/auth/entities/user_entity.dart';
+import 'package:repository_layer/core/constants/constants.dart';
 import 'package:repository_layer/core/error/failures.dart';
 import 'package:repository_layer/core/network/connection_checker.dart';
 
@@ -75,7 +76,7 @@ class AuthRepositoryImpl implements AuthRepository {
       Future<UserModel> Function() fn) async {
     try {
       if (!await (connectionChecker.isConnected)) {
-        return left(Failure("No internet connection!"));
+        return left(Failure(Constants.noConnectionErrorMessage));
       }
       final user = await fn();
 

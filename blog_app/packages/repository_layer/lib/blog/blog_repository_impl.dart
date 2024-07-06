@@ -7,6 +7,7 @@ import 'package:data_layer/core/error/exceptions.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:repository_layer/blog/blog_repository.dart';
 import 'package:repository_layer/blog/entities/blog_entity.dart';
+import 'package:repository_layer/core/constants/constants.dart';
 import 'package:repository_layer/core/error/failures.dart';
 import 'package:repository_layer/core/network/connection_checker.dart';
 import 'package:uuid/uuid.dart';
@@ -30,8 +31,7 @@ class BlogRepositoryImpl implements BlogRepository {
     required List<String> topics,
   }) async {
     if (!await (connectionChecker.isConnected)) {
-      return left(Failure("No internet connection!"));
-      /* return left(Failure(Constants.noConnectionErrorMessage)); */
+      return left(Failure(Constants.noConnectionErrorMessage));
     }
     try {
       BlogModel blogModel = BlogModel(

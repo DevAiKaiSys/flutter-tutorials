@@ -10,7 +10,7 @@ class HiveBlogApi implements BlogApi {
 
   @override
   Future<List<BlogModel>> getAllBlogs() async {
-    await Future.delayed(Duration(milliseconds: 1));
+    await Future.delayed(const Duration(milliseconds: 1));
 
     List<BlogModel> blogs = [];
     box.read(() {

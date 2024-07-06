@@ -62,7 +62,7 @@ class BlogViewerPage extends StatelessWidget {
                       print('Failed to load image: $exception');
                       return Container(
                         color: Colors.grey,
-                        child: Icon(Icons.error),
+                        child: const Icon(Icons.error),
                       );
                     },
                   ),
