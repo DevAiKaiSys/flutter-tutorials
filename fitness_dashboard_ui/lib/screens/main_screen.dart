@@ -12,6 +12,12 @@ class MainScreen extends StatelessWidget {
     final isDesktop = Responsive.isDesktop(context);
 
     return Scaffold(
+      drawer: !isDesktop
+          ? const SizedBox(
+              width: 250,
+              child: SideMenuWidget(),
+            )
+          : null,
       body: SafeArea(
         child: Row(
           children: [
