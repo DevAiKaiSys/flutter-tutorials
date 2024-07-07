@@ -5,6 +5,23 @@ class MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      body: Row(
+        children: [
+          Expanded(
+            flex: 2,
+            child: Container(color: Colors.red),
+          ),
+          Expanded(
+            flex: 7,
+            child: Container(color: Colors.blue),
+          ),
+          Expanded(
+            flex: 3,
+            child: Container(color: Colors.green),
+          ),
+        ],
+      ),
+    );
   }
 }
