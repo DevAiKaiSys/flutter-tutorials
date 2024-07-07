@@ -1,3 +1,4 @@
+import 'package:fitness_dashboard_ui/util/responsive.dart';
 import 'package:fitness_dashboard_ui/widgets/dashboard_widget.dart';
 import 'package:fitness_dashboard_ui/widgets/side_menu_widget.dart';
 import 'package:fitness_dashboard_ui/widgets/summary_widget.dart';
@@ -8,22 +9,30 @@ class MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Row(
-        children: [
-          Expanded(
-            flex: 2,
-            child: SideMenuWidget(),
-          ),
-          Expanded(
-            flex: 7,
-            child: DashboardWidget(),
-          ),
-          Expanded(
-            flex: 3,
-            child: SummaryWidget(),
-          ),
-        ],
+    final isDesktop = Responsive.isDesktop(context);
+
+    return Scaffold(
+      body: SafeArea(
+        child: Row(
+          children: [
+            if (isDesktop)
+              const Expanded(
+                flex: 2,
+                child: SizedBox(
+                  child: SideMenuWidget(),
+                ),
+              ),
+            const Expanded(
+              flex: 7,
+              child: DashboardWidget(),
+            ),
+            if (isDesktop)
+              const Expanded(
+                flex: 3,
+                child: SummaryWidget(),
+              ),
+          ],
+        ),
       ),
     );
   }
