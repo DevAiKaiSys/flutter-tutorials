@@ -64,6 +64,16 @@ class HeaderWidget extends StatelessWidget {
                 ),
                 onPressed: () {},
               ),
+              InkWell(
+                onTap: () => Scaffold.of(context).openEndDrawer(),
+                child: CircleAvatar(
+                  backgroundColor: Colors.transparent,
+                  child: Image.asset(
+                    "assets/images/avatar.png",
+                    width: 32,
+                  ),
+                ),
+              ),
             ],
           ),
       ],
