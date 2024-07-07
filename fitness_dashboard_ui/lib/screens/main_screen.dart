@@ -1,3 +1,4 @@
+import 'package:fitness_dashboard_ui/widgets/side_menu_widget.dart';
 import 'package:flutter/material.dart';
 
 class MainScreen extends StatelessWidget {
@@ -8,9 +9,9 @@ class MainScreen extends StatelessWidget {
     return Scaffold(
       body: Row(
         children: [
-          Expanded(
+          const Expanded(
             flex: 2,
-            child: Container(color: Colors.red),
+            child: SideMenuWidget(),
           ),
           Expanded(
             flex: 7,
