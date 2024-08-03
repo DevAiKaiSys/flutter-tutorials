@@ -18,3 +18,9 @@ flutter test
 or
 flutter test test/models/favorites_test.dart
 ```
+
+### Integration tests
+
+```
+flutter test integration_test/app_test.dart
+```
