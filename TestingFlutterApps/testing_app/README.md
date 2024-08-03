@@ -24,3 +24,21 @@ flutter test test/models/favorites_test.dart
 ```
 flutter test integration_test/app_test.dart
 ```
+
+###
+
+```
+flutter drive --driver=test_driver/perf_driver.dart --target=integration_test/perf_test.dart --profile --no-dds
+```
+
+### Test Coverage Report
+
+```
+# Generate `coverage/lcov.info` file
+flutter test --coverage
+# Generate HTML report
+# Note: on macOS you need to have lcov installed on your system (`brew install lcov`) to use this:
+genhtml coverage/lcov.info -o coverage/html
+# Open the report
+open coverage/html/index.html
+```
