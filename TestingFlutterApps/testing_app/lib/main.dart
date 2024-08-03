@@ -9,7 +9,7 @@ void main() {
   runApp(const TestingApp());
 }
 
-final _router = GoRouter(g
+final _router = GoRouter(
   routes: [
     GoRoute(
       path: HomePage.routeName,

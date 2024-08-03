@@ -10,3 +10,11 @@ flutter pub add dev:test
 flutter pub add "dev:flutter_driver:{'sdk':'flutter'}"
 flutter pub add "dev:integration_test:{'sdk':'flutter'}"
 ```
+
+## Run the test
+
+```
+flutter test
+or
+flutter test test/models/favorites_test.dart
+```
