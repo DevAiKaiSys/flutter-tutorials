@@ -26,14 +26,21 @@ flutter test
 ### Add dependencies
 
 ```bash
+flutter pub add equatable
 flutter pub add flutter_bloc
 ```
 
 ### Add dev_dependencies
 
 ```bash
-flutter pub add bloc_lint --dev
-flutter pub add bloc_test --dev
-flutter pub add integration_test --dev
-flutter pub add mocktail --dev
+flutter pub add bloc_lint bloc_test mocktail --dev
+```
+
+### Add integration dev_dependencies
+
+```
+// pubspec.yaml
+dev_dependencies:
+ integration_test:
+    sdk: flutter
 ```
