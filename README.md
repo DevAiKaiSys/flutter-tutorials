@@ -82,3 +82,25 @@ dev_dependencies:
  integration_test:
     sdk: flutter
 ```
+
+### Run json
+
+```
+dart run build_runner build
+```
+
+### Run Unit Test
+
+on macOS install
+
+```
+brew install lcov
+```
+
+cd to project or packages
+
+```
+flutter test --coverage
+genhtml coverage/lcov.info -o coverage
+open coverage/index.html
+```
