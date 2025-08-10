@@ -74,29 +74,22 @@ dart pub global activate very_good_cli
 ```
 
 
-ตรวจสอบว่าใช้ shell อะไร:
+### Configure PATH
 
-```
+**Check Shell:**
+```bash
 echo $SHELL
 ```
 
-สำหรับ Zsh (default บน macOS):
-
-```
-# เพิ่มใน ~/.zshrc
+**Set PATH for Zsh:**
+```bash
 echo 'export PATH="$PATH:$HOME/.pub-cache/bin"' >> ~/.zshrc
-
-# Reload shell
 source ~/.zshrc
 ```
 
-สำหรับ Bash:
-
-```
-# เพิ่มใน ~/.bash_profile หรือ ~/.bashrc
+**Set PATH for Bash:**
+```bash
 echo 'export PATH="$PATH:$HOME/.pub-cache/bin"' >> ~/.bash_profile
-
-# Reload shell
 source ~/.bash_profile
 ```
 
