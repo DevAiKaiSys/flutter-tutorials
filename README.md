@@ -104,3 +104,42 @@ flutter test --coverage
 genhtml coverage/lcov.info -o coverage
 open coverage/index.html
 ```
+
+## ติดตั้ง very_good_cli:
+
+```
+dart pub global activate very_good_cli
+```
+
+ตรวจสอบว่าใช้ shell อะไร:
+
+```
+echo $SHELL
+```
+
+สำหรับ Zsh (default บน macOS):
+
+```
+# เพิ่มใน ~/.zshrc
+echo 'export PATH="$PATH:$HOME/.pub-cache/bin"' >> ~/.zshrc
+
+# Reload shell
+source ~/.zshrc
+```
+
+สำหรับ Bash:
+
+```
+# เพิ่มใน ~/.bash_profile หรือ ~/.bashrc
+echo 'export PATH="$PATH:$HOME/.pub-cache/bin"' >> ~/.bash_profile
+
+# Reload shell
+source ~/.bash_profile
+```
+
+install all the dependencies:
+
+```
+very_good packages get --recursive
+```
+
